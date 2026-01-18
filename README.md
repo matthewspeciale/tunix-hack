@@ -21,7 +21,7 @@ Training was done in three stages:
 
 ## 🏷️ Output Format (Reasoning Tags)
 
-We trained the model to consistently separate reasoning from the final response using explicit tags:
+We trained the model to follow a tagged output format:
 
 ```xml
 <reasoning>
@@ -32,11 +32,11 @@ We trained the model to consistently separate reasoning from the final response 
 </answer>
 ```
 
-During training and evaluation, outputs were also scored for tag compliance (presence + correct ordering) in addition to answer quality.
+**Note:** Tag compliance is evaluated under the system prompt template. Without the template, the model may still produce tags, but formatting consistency can vary.
 
 ## 📈 Results (held-out evaluation)
 
-On a held-out test set, we observed:
+On a held-out test set (using the system prompt template), we observed:
 - **Format compliance:** ~51% → ~95%
 - **Reasoning quality:** ~5.6 → ~6.7 (1–10 scale)
 - **Answer quality:** ~5.4 → ~6.4 (1–10 scale)
